@@ -2,6 +2,7 @@
 const carrito = document.querySelector("#carrito");
 const contenedorCarrito = document.querySelector("#lista-carrito tbody");
 const vaciarCarritoBtn = document.querySelector("#vaciar-carrito");
+
 //Seleccionamos el div padre de TODO el cual contiene al "a"
 const listaCursos = document.querySelector("#lista-cursos");
 
@@ -15,6 +16,12 @@ function cargarEventListeners() {
   //Elimina cursos del carrito
   carrito.addEventListener("click", eliminarCurso);
 
+  //Muestra los cursos del localStorage
+  document.addEventListener("DOMContentLoaded", () => {
+    articulosCarrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    carritoHTML();
+  });
+
   //Vaciar el carrito
   vaciarCarritoBtn.addEventListener("click", () => {
     articulosCarrito = []; //Reseteamos el arreglo
@@ -24,9 +31,9 @@ function cargarEventListeners() {
 
 //FUNCIONES
 function agregarCurso(e) {
-  e.preventDefault();
+  e.preventDefault(); //Prevenimos el evento por default del href que al hacer click en el boton nos mueve a la parte superior de la p.web
 
-  //Le doy click al "a"
+  //Le doy click al "a", ASI PREVENIMOS EL "EVENT BUBBLING"
   if (e.target.classList.contains("agregar-carrito")) {
     //Subimos dos(2) niveles a: <div class="card">
     const cursoSeleccionado = e.target.parentElement.parentElement;
@@ -110,6 +117,13 @@ function carritoHTML() {
     //Agrega el HTML del carrito en el tbody
     contenedorCarrito.appendChild(row);
   });
+
+  //Agregar el carrito de compras al storage
+  sincronizarStorage();
+}
+
+function sincronizarStorage() {
+  localStorage.setItem("carrito", JSON.stringify(articulosCarrito));
 }
 
 //Limpia el HTML
