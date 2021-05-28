@@ -10,7 +10,7 @@ I developed the shopping cart so the user can click on the button "Agregar al ca
 
 Github pages: https://juanjefry23.github.io/Web-Cursos/
 
-Netlify: https://wizardly-liskov-3b0bb8.netlify.app/
+Netlify: https://nervous-kilby-c2414b.netlify.app/
 
 💻💻💻💻💻💻💻💻💻💻💻💻💻💻💻💻💻💻💻💻💻💻💻💻💻💻💻💻💻💻💻💻💻💻💻💻💻💻
 
